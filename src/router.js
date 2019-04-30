@@ -50,8 +50,8 @@ export default new Router({
         }
       ],
       beforeEnter: (to, from, next) => {
-        if (to.params.token === null) {
-          next(false);
+        if (to.params.token === null || to.params.token === undefined) {
+          next("/login");
         } else {
           next();
         }

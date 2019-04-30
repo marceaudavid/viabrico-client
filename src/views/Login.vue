@@ -1,5 +1,5 @@
 <template>
-  <Form title="Login"/>
+  <Form name="login"/>
 </template>
 
 <script>

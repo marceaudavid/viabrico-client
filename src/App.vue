@@ -5,11 +5,15 @@
 </template>
 
 <style>
-/* http://meyerweb.com/eric/tools/css/reset/ 
-   v2.0 | 20110126
-   License: none (public domain)
-*/
+/* Import Fonts */
 @import url("https://fonts.googleapis.com/css?family=Lato|Montserrat");
+/* Reset CSS */
+html,
+body,
+#app {
+  width: 100%;
+  height: 100%;
+}
 html,
 body,
 div,
