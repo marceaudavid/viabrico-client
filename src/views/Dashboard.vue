@@ -42,10 +42,9 @@ body {
 }
 .card {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: center;
   flex-wrap: wrap;
   margin: auto;
-  width: 90%;
+  width: 95%;
 }
 </style>
