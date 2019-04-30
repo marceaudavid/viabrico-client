@@ -10,11 +10,11 @@
     </div>
 
     <div class="container-bot">
-      <h1>M. Michel DRUCKER</h1>
+      <h1>{{ this.name }}</h1>
       <p class="info">Animateur de télévision et de radio, producteur de télévission.</p>
-      <p>4 rue mont-parnasse, 44000 Nantes</p>
-      <p>06 06 06 06 06</p>
-      <p>michel.drucker@gmail.com</p>
+      <p>{{ this.address }}</p>
+      <p>{{ this.phone }}</p>
+      <p>{{ this.mail }}</p>
       <div class="read">
         <a class="link-read" href="#">Read More</a>
       </div>
@@ -26,7 +26,12 @@
 export default {
   name: "Card",
   props: {
-    title: String
+    id: Number,
+    name: String,
+    address: String,
+    mail: String,
+    phone: Number,
+    description: String
   }
 };
 </script>

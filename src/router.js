@@ -48,14 +48,14 @@ export default new Router({
           name: "add",
           component: Add
         }
-      ],
-      beforeEnter: (to, from, next) => {
-        if (to.params.token === null || to.params.token === undefined) {
-          next("/login");
-        } else {
-          next();
-        }
-      }
+      ]
+      // beforeEnter: (to, from, next) => {
+      //   if (to.params.token === null || to.params.token === undefined) {
+      //     next("/login");
+      //   } else {
+      //     next();
+      //   }
+      // }
     }
   ]
 });

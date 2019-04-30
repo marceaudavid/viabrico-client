@@ -3,12 +3,15 @@
     <Nav/>
     <SearchBar/>
     <p class="resultat">3 Résultats</p>
-    <div class="card">
-      <Card/>
-      <Card/>
-      <Card/>
-      <Card/>
-      <Card/>
+    <div v-for="supplier in suppliers" v-bind:key="supplier.id" class="card">
+      <Card
+        v-bind:id="supplier.id"
+        v-bind:name="supplier.name"
+        v-bind:address="supplier.address"
+        v-bind:mail="supplier.mail"
+        v-bind:phone="supplier.phone"
+        v-bind:description="supplier.description"
+      />
     </div>
   </div>
 </template>
@@ -23,6 +26,26 @@ export default {
     Nav,
     SearchBar,
     Card
+  },
+  data() {
+    return {
+      suppliers: []
+    };
+  },
+  created() {
+    const token = localStorage.getItem("token");
+    fetch(`https://viabrico.herokuapp.com/suppliers`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
+      .then(body => {
+        return body.json();
+      })
+      .then(res => {
+        this.suppliers = res;
+      });
   }
 };
 </script>
@@ -41,11 +64,6 @@ body {
   color: #707070;
 }
 .card {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  margin: auto;
-  width: 90%;
+  display: inline;
 }
 </style>

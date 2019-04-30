@@ -31,7 +31,7 @@ export default {
     Popup,
     Submit
   },
-  data: function() {
+  data() {
     return {
       loading: false,
       email: null,
@@ -65,9 +65,9 @@ export default {
           }
         })
         .then(res => {
-          console.log(res);
           this.loading = false;
           if (this.name === "login") {
+            localStorage.setItem("token", res);
             router.push({ name: "dashboard", params: { token: res } });
           }
         })
