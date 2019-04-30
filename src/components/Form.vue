@@ -87,7 +87,15 @@ export default {
   justify-content: center;
   width: 100%;
   height: 100%;
-  background-image: url(../assets/img/city-background);
+  background-image: linear-gradient(
+      rgba(254, 253, 253, 0.3),
+      rgba(254, 253, 253, 0.3)
+    ),
+    url(../assets/img/city-background-3.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
 }
 .title {
   margin: 20px 0px;
