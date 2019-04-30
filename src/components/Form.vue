@@ -65,7 +65,6 @@ export default {
           }
         })
         .then(res => {
-          console.log(res);
           this.loading = false;
           if (this.name === "login") {
             router.push({ name: "dashboard", params: { token: res } });
