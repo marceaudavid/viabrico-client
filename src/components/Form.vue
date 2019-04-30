@@ -85,9 +85,9 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 740px;
+  width: 100%;
   height: 100%;
-  margin: auto;
+  background-image: url(../assets/img/city-background);
 }
 .title {
   margin: 20px 0px;
