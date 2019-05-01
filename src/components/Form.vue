@@ -65,7 +65,6 @@ export default {
           }
         })
         .then(res => {
-          console.log(res);
           this.loading = false;
           if (this.name === "login") {
             router.push({ name: "dashboard", params: { token: res } });
@@ -85,9 +84,17 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 740px;
+  width: 100%;
   height: 100%;
-  margin: auto;
+  background-image: linear-gradient(
+      rgba(254, 253, 253, 0.3),
+      rgba(254, 253, 253, 0.3)
+    ),
+    url(../assets/img/city-background-3.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
 }
 .title {
   margin: 20px 0px;
