@@ -138,4 +138,7 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+#app {
+  width: 100%;
+}
 </style>

@@ -64,6 +64,10 @@ body {
   color: #707070;
 }
 .card {
-  display: inline;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: auto;
+  width: 95%;
 }
 </style>

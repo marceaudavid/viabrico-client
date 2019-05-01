@@ -38,8 +38,8 @@ export default {
 
 <style scoped>
 .container {
-  margin: 60px auto 75px auto;
-  border-radius: 25px;
+  margin: 25px 25px 50px 25px;
+  border-radius: 30px;
   width: 350px;
   height: 500px;
   background-image: url("../assets/img/img_mountains.jpg");
@@ -67,7 +67,7 @@ export default {
 }
 .container-bot {
   background-color: white;
-  height: 66%;
+  height: 65%;
   border-radius: 0 0 25px 25px;
 }
 h1 {
