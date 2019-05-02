@@ -13,6 +13,7 @@
 </template>
 
 <script>
+import router from "@/router.js";
 import Nav from "@/components/Nav.vue";
 import Submit from "@/components/Submit.vue";
 export default {
@@ -57,7 +58,7 @@ export default {
         })
         .then(res => {
           this.loading = false;
-          console.log(res);
+          router.push({ name: "dashboard" });
         })
         .catch(() => {
           this.loading = false;

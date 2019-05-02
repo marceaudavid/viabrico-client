@@ -37,7 +37,7 @@ export default {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  margin: 5px 0px;
+  margin: 5px auto auto auto;
   padding: 0px 5px;
   border: 1px solid #2c3e50;
   border-radius: 5px;
