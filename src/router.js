@@ -32,23 +32,19 @@ export default new Router({
       component: Add
     },
     {
+      path: "/supplier/:id",
+      name: "supplier",
+      component: Supplier
+    },
+    {
+      path: "/supplier/:id/edit",
+      name: "edit",
+      component: Edit
+    },
+    {
       path: "/dashboard",
       name: "dashboard",
-      component: Dashboard,
-      children: [
-        {
-          path: ":id",
-          name: "supplier",
-          component: Supplier,
-          children: [
-            {
-              path: "edit",
-              name: "edit",
-              component: Edit
-            }
-          ]
-        }
-      ]
+      component: Dashboard
       // beforeEnter: (to, from, next) => {
       //   if (to.params.token === null || to.params.token === undefined) {
       //     next("/login");
