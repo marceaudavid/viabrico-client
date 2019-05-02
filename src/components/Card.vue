@@ -30,7 +30,7 @@ export default {
     name: String,
     address: String,
     mail: String,
-    phone: Number,
+    phone: String,
     description: String
   }
 };
