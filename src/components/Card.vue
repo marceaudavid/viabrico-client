@@ -3,6 +3,18 @@
     <div class="container-top">
       <div class="option">
         <img class="icon-option" src="../assets/svg/_ionicons_svg_md-more.svg" alt="image-option">
+        <img
+          class="icon-option"
+          v-on:click="editSupplier"
+          src="../assets/svg/edit.svg"
+          alt="image-edit"
+        >
+        <img
+          class="icon-option"
+          v-on:click="deleteSupplier"
+          src="../assets/svg/delete.svg"
+          alt="image-delete"
+        >
       </div>
       <div class="profil">
         <img class="icon-profil" src="../assets/svg/icons8-administrator-male-filled.svg" alt>
@@ -23,6 +35,7 @@
 </template>
 
 <script>
+import router from "@/router.js";
 export default {
   name: "Card",
   props: {
@@ -32,6 +45,23 @@ export default {
     mail: String,
     phone: String,
     description: String
+  },
+  data() {
+    return {
+      token: null,
+      response: null,
+      errors: []
+    };
+  },
+  methods: {
+    editSupplier() {
+      router.push({
+        path: `/supplier/${this.id}/edit`
+      });
+    },
+    deleteSupplier() {
+      this.$emit("delete", this.id);
+    }
   }
 };
 </script>

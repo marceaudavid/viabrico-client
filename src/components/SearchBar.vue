@@ -1,7 +1,7 @@
 <template>
   <div class="searchBar">
     <button type="submit" class="icon-search">
-      <img class="iconSearch" src="../assets/svg/icons8-search.svg" alt>
+      <img class="iconSearch" src="../assets/svg/search.svg" alt>
     </button>
     <input
       class="inputText"

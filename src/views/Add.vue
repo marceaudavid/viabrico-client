@@ -30,7 +30,8 @@ export default {
       email: null,
       errors: [],
       token: null,
-      loading: false
+      loading: false,
+      response: null
     };
   },
   methods: {
@@ -57,7 +58,7 @@ export default {
         })
         .then(res => {
           this.loading = false;
-          console.log(res);
+          this.response = res;
         })
         .catch(() => {
           this.loading = false;

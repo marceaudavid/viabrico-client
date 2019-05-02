@@ -9,6 +9,7 @@
     <div v-for="supplier in suppliers" v-bind:key="supplier.id">
       <div class="card">
         <Card
+          v-on:delete="deleteSupplier"
           v-bind:id="supplier.id"
           v-bind:name="supplier.name"
           v-bind:address="supplier.address"
@@ -34,8 +35,33 @@ export default {
   },
   data() {
     return {
-      suppliers: []
+      suppliers: [],
+      response: null
     };
+  },
+  methods: {
+    deleteSupplier(id) {
+      this.token = localStorage.getItem("token");
+      fetch(`https://viabrico.herokuapp.com/suppliers/${id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": `application/json`,
+          Authorization: `Bearer ${this.token}`
+        }
+      })
+        .then(body => {
+          return body.json();
+        })
+        .then(res => {
+          this.response = res.msg;
+          this.suppliers = this.suppliers.filter(
+            supplier => supplier.id !== id
+          );
+        })
+        .catch(() => {
+          this.errors.push(`Network error, please retry later`);
+        });
+    }
   },
   created() {
     const token = localStorage.getItem("token");
