@@ -27,6 +27,11 @@ export default new Router({
       component: Login
     },
     {
+      path: "/add",
+      name: "add",
+      component: Add
+    },
+    {
       path: "/dashboard",
       name: "dashboard",
       component: Dashboard,
@@ -42,11 +47,6 @@ export default new Router({
               component: Edit
             }
           ]
-        },
-        {
-          path: "add",
-          name: "add",
-          component: Add
         }
       ]
       // beforeEnter: (to, from, next) => {

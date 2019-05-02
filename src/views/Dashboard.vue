@@ -2,16 +2,21 @@
   <div>
     <Nav/>
     <SearchBar/>
-    <p class="resultat">3 Résultats</p>
-    <div v-for="supplier in suppliers" v-bind:key="supplier.id" class="card">
-      <Card
-        v-bind:id="supplier.id"
-        v-bind:name="supplier.name"
-        v-bind:address="supplier.address"
-        v-bind:mail="supplier.mail"
-        v-bind:phone="supplier.phone"
-        v-bind:description="supplier.description"
-      />
+    <button>
+      <a href="/add">Add</a>
+    </button>
+    <p class="resultat">{{ suppliers.length }} Résultats</p>
+    <div v-for="supplier in suppliers" v-bind:key="supplier.id">
+      <div class="card">
+        <Card
+          v-bind:id="supplier.id"
+          v-bind:name="supplier.name"
+          v-bind:address="supplier.address"
+          v-bind:mail="supplier.mail"
+          v-bind:phone="supplier.phone"
+          v-bind:description="supplier.description"
+        />
+      </div>
     </div>
   </div>
 </template>
