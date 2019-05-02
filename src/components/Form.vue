@@ -1,19 +1,32 @@
 <template>
   <div class="container">
-    <h1 class="title">{{ name }}</h1>
-    <Popup v-for="(error, index) in errors" :key="index" v-bind:error="error"/>
-    <form class="form" @submit="request">
-      <input class="input" type="email" v-model="email" name="email" placeholder="Email" required>
-      <input
-        class="input"
-        type="password"
-        v-model="password"
-        name="password"
-        placeholder="Password"
-        required
-      >
-      <Submit v-bind:loading="loading"/>
-    </form>
+    <div class="container-card">
+      <div class="container-title">
+        <h1 class="title">{{ name }}</h1>
+      </div>
+      <div class="contairer-center">
+        <Popup v-for="(error, index) in errors" :key="index" v-bind:error="error"/>
+        <form class="form" @submit="request">
+          <input
+            class="input"
+            type="email"
+            v-model="email"
+            name="email"
+            placeholder="Email"
+            required
+          >
+          <input
+            class="input"
+            type="password"
+            v-model="password"
+            name="password"
+            placeholder="Password"
+            required
+          >
+          <Submit v-bind:loading="loading"/>
+        </form>
+      </div>
+    </div>
   </div>
 </template>
 
