@@ -25,10 +25,7 @@
                 placeholder="Password"
                 required
               >
-              <p>
-                No account ?
-                <a href="register">Register</a>
-              </p>
+              <router-link to="/register">Pas de compte ?</router-link>
             </div>
           </div>
           <Submit v-bind:loading="loading"/>
@@ -87,8 +84,7 @@ export default {
             router.push({ name: "dashboard", params: { token: res } });
           }
         })
-        .catch(err => {
-          console.log(err);
+        .catch(() => {
           this.loading = false;
           this.errors.push(`Network error, please retry later`);
         });
@@ -202,7 +198,7 @@ export default {
 p {
   color: #707070;
 }
-a {
+router-link {
   text-decoration: none;
   color: #ff5d00;
 }

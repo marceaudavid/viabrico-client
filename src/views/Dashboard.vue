@@ -3,7 +3,7 @@
     <Nav/>
     <div class="dashboard">
       <div class="action">
-        <SearchBar/>
+        <SearchBar v-on:search="search"/>
         <AddButton/>
       </div>
       <p class="result">{{ suppliers.length }} résultats</p>
@@ -44,6 +44,24 @@ export default {
     };
   },
   methods: {
+    search(keyword) {
+      this.token = localStorage.getItem("token");
+      fetch(`https://viabrico.herokuapp.com/suppliers?keyword=${keyword}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": `application/json`,
+          Authorization: `Bearer ${this.token}`
+        }
+      })
+        .then(body => {
+          return body.json();
+        })
+        .then(res => {
+          console.log(res);
+          this.suppliers = res;
+        })
+        .catch(() => {});
+    },
     remove(id) {
       this.token = localStorage.getItem("token");
       fetch(`https://viabrico.herokuapp.com/suppliers/${id}`, {
@@ -62,9 +80,7 @@ export default {
             supplier => supplier.id !== id
           );
         })
-        .catch(() => {
-          this.errors.push(`Network error, please retry later`);
-        });
+        .catch(() => {});
     }
   },
   created() {

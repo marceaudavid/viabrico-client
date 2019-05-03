@@ -25,10 +25,7 @@
                 placeholder="Password"
                 required
               >
-              <p>
-                No account ?
-                <a href="login">Login</a>
-              </p>
+              <router-link to="/login">Déjà inscrit ?</router-link>
             </div>
           </div>
           <Submit v-bind:loading="loading"/>
@@ -199,7 +196,7 @@ export default {
 p {
   color: #707070;
 }
-a {
+router-link {
   text-decoration: none;
   color: #ff5d00;
 }
