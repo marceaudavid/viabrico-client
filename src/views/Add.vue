@@ -1,14 +1,23 @@
 <template>
   <div>
     <Nav/>
-    <form class="form" @submit="request">
-      <input type="text" v-model="name" name="name" placeholder="Name" required>
-      <textarea v-model="description" name="description" placeholder="Description" required></textarea>
-      <input type="text" v-model="address" name="address" placeholder="Address" required>
-      <input type="number" v-model="phone" name="phone" placeholder="Phone" required>
-      <input type="email" v-model="email" name="email" placeholder="Email" required>
-      <Submit v-bind:loading="loading"/>
-    </form>
+    <div class="container-form-parent">
+      <div class="container-form">
+        <form class="form" @submit="add">
+          <label class="label-edit" for>Name :</label>
+          <input class="input-edit" type="text" v-model="name" name="name" required>
+          <label class="label-edit" for>Address :</label>
+          <input class="input-edit" type="text" v-model="address" name="address" required>
+          <label class="label-edit" for>Phone-Number :</label>
+          <input class="input-edit" type="number" v-model="phone" name="phone" required>
+          <label class="label-edit" for>Email :</label>
+          <input class="input-edit" type="email" v-model="email" name="email" required>
+          <label class="label-edit" for>Description :</label>
+          <textarea class="description" v-model="description" name="description" required></textarea>
+          <Submit class="button" v-bind:loading="loading"/>
+        </form>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -36,7 +45,7 @@ export default {
     };
   },
   methods: {
-    request(e) {
+    add(e) {
       e.preventDefault();
       this.loading = true;
       this.token = localStorage.getItem("token");
@@ -72,4 +81,60 @@ export default {
 </script>
 
 <style>
+.container-form-parent {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container-form {
+  width: 675px;
+  height: 720px;
+  margin: 10% 0%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+@media screen and (max-width: 700px) {
+  .container-form {
+    width: 85%;
+  }
+}
+.form {
+  height: 680px;
+  width: 535px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+@media screen and (max-width: 700px) {
+  .form {
+    width: 85%;
+  }
+}
+.label-edit {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+.input-edit {
+  background-color: #e8eeee;
+  border: none;
+  height: 30px;
+}
+.description {
+  background-color: #e8eeee;
+  border: none;
+  height: 200px;
+}
+.button {
+  height: 50px;
+  border: none;
+  background-color: #1bbc9b;
+  color: #fff;
+  margin: 0;
+}
 </style>

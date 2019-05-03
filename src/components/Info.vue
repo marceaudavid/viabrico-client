@@ -2,7 +2,6 @@
   <div class="container">
     <div class="container-top">
       <div class="profil">
-        <img class="icon-profil" src="../assets/svg/icons8-administrator-male-filled.svg" alt>
         <h1>{{ this.name }}</h1>
       </div>
     </div>
@@ -14,7 +13,7 @@
         <div class="coordon">
           <p>{{ this.address }}</p>
           <p>{{ this.phone }}</p>
-          <p>{{ this.mail }}</p>
+          <p>{{ this.email }}</p>
         </div>
       </div>
     </div>
@@ -22,14 +21,13 @@
 </template>
 
 <script>
-import router from "@/router.js";
 export default {
   name: "InfoCard",
   props: {
     id: Number,
     name: String,
     address: String,
-    mail: String,
+    email: String,
     phone: Number,
     description: String
   },

@@ -1,13 +1,9 @@
 <template>
-  <div class="container">
+  <div>
     <Nav/>
     <div class="container-form-parent">
       <div class="container-form">
-        <form class="form" @submit="request">
-          <div class="title">
-            <h1 class="title-edit">NEW SUPPLIER</h1>
-            <hr>
-          </div>
+        <form class="form" @submit="update">
           <label class="label-edit" for>Name :</label>
           <input class="input-edit" type="text" v-model="name" name="name" required>
           <label class="label-edit" for>Address :</label>
@@ -36,6 +32,7 @@ export default {
   },
   data() {
     return {
+      id: null,
       name: null,
       description: null,
       address: null,
@@ -43,12 +40,11 @@ export default {
       email: null,
       errors: [],
       token: null,
-      response: null,
       loading: false
     };
   },
   methods: {
-    request(e) {
+    update(e) {
       e.preventDefault();
       this.loading = true;
       this.token = localStorage.getItem("token");
@@ -78,7 +74,6 @@ export default {
         })
         .catch(() => {
           this.loading = false;
-          this.errors.push(`Network error, please retry later`);
         });
     }
   },
@@ -94,6 +89,7 @@ export default {
         return body.json();
       })
       .then(res => {
+        this.id = res.id;
         this.name = res.name;
         this.description = res.description;
         this.address = res.address;
@@ -105,26 +101,23 @@ export default {
 </script>
 
 <style>
-.container {
-  width: 100%;
-  height: 100%;
-}
 .container-form-parent {
-  height: 89.4%;
+  height: 100%;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #e5ded8;
 }
+
 .container-form {
   width: 675px;
   height: 720px;
+  margin: 10% 0%;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #f5f6f8;
-  border-radius: 15px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 @media screen and (max-width: 700px) {
   .container-form {
@@ -144,18 +137,6 @@ export default {
     width: 85%;
   }
 }
-.title {
-  width: 85%;
-  text-align: center;
-  margin: 0px auto;
-}
-.title-edit {
-  margin-bottom: 20px;
-  font-size: 1.5em;
-}
-hr {
-  border: solid 1px #707070;
-}
 .label-edit {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -172,7 +153,8 @@ hr {
 .button {
   height: 50px;
   border: none;
-  background-color: #4cc96e;
+  background-color: #1bbc9b;
+  color: #fff;
   margin: 0;
 }
 </style>

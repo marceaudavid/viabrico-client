@@ -72,7 +72,7 @@ export default {
   border-radius: 5px;
 }
 
-@media screen and (min-width: 60em) {
+@media screen and (min-width: 1047px) {
   .card {
     max-width: 250px;
   }

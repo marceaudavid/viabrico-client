@@ -25,7 +25,7 @@ export default {
   align-items: center;
   width: 50px;
   height: 50px;
-  margin: 1em;
+  margin: 2em;
   border: none;
   padding: none;
   background-color: white;

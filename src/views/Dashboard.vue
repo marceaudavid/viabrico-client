@@ -96,10 +96,14 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-content: center;
+  align-items: center;
 }
 .result {
   display: flex;
   justify-content: center;
+  font-family: "Lato";
+  opacity: 0.3;
 }
 .feed {
   width: 100%;
