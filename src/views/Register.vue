@@ -62,7 +62,7 @@ export default {
     request(e) {
       e.preventDefault();
       this.loading = true;
-      fetch(`https://viabrico.herokuapp.com/${this.name}`, {
+      fetch(`https://viabrico.herokuapp.com/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -70,24 +70,20 @@ export default {
         body: JSON.stringify({ email: this.email, password: this.password })
       })
         .then(body => {
-          if (body.status === 403) {
-            this.errors.push(`Wrong password`);
-          } else if (body.status === 404) {
-            this.errors.push(`This user doesn't exist`);
+          if (body.status === 400) {
+            this.errors.push(`User already exists`);
+          } else if (body.status === 500) {
+            this.errors.push(
+              `Your account can't be created pleaser retry later`
+            );
           } else {
-            if (this.name === "register") {
-              router.push({ name: "login" });
-            } else {
-              return body.json();
-            }
+            router.push({ name: "login" });
+            return body.json();
           }
         })
         .then(res => {
           this.loading = false;
-          if (this.name === "login") {
-            localStorage.setItem("token", res);
-            router.push({ name: "dashboard", params: { token: res } });
-          }
+          this.response = res;
         })
         .catch(() => {
           this.loading = false;

@@ -51,7 +51,7 @@ export default {
           description: this.description,
           address: this.address,
           phone: this.phone,
-          mail: this.email
+          email: this.email
         })
       })
         .then(body => {
@@ -59,11 +59,8 @@ export default {
         })
         .then(res => {
           this.loading = false;
-<<<<<<< HEAD
           router.push({ name: "dashboard" });
-=======
           this.response = res;
->>>>>>> 235921b842a04b31d14f05958b33cd0b2eab7818
         })
         .catch(() => {
           this.loading = false;

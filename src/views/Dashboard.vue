@@ -1,19 +1,21 @@
 <template>
   <div>
     <Nav/>
-    <SearchBar/>
-    <button>
-      <a href="/add">Add</a>
-    </button>
-    <p class="resultat">{{ suppliers.length }} Résultats</p>
-    <div v-for="supplier in suppliers" v-bind:key="supplier.id">
-      <div class="card">
+    <div class="dashboard">
+      <div class="action">
+        <SearchBar/>
+        <AddButton/>
+      </div>
+      <p class="result">{{ suppliers.length }} résultats</p>
+      <div class="feed">
         <Card
-          v-on:delete="deleteSupplier"
+          v-for="supplier in suppliers"
+          v-bind:key="supplier.id"
+          v-on:remove="remove"
           v-bind:id="supplier.id"
           v-bind:name="supplier.name"
           v-bind:address="supplier.address"
-          v-bind:mail="supplier.mail"
+          v-bind:email="supplier.email"
           v-bind:phone="supplier.phone"
           v-bind:description="supplier.description"
         />
@@ -25,12 +27,14 @@
 <script>
 import Nav from "@/components/Nav.vue";
 import SearchBar from "@/components/SearchBar.vue";
+import AddButton from "@/components/AddButton.vue";
 import Card from "@/components/Card.vue";
 export default {
   name: "Dashboard",
   components: {
     Nav,
     SearchBar,
+    AddButton,
     Card
   },
   data() {
@@ -40,7 +44,7 @@ export default {
     };
   },
   methods: {
-    deleteSupplier(id) {
+    remove(id) {
       this.token = localStorage.getItem("token");
       fetch(`https://viabrico.herokuapp.com/suppliers/${id}`, {
         method: "DELETE",
@@ -82,23 +86,24 @@ export default {
 </script>
 
 <style>
-* {
-  font-family: Segoe UI;
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  margin: 5%;
 }
-body {
-  background-color: white;
+
+.action {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
-.resultat {
-  margin: 10px auto 50px auto;
-  text-align: center;
-  font-family: Segoe UI;
-  color: #707070;
-}
-.card {
+.result {
   display: flex;
   justify-content: center;
+}
+.feed {
+  width: 100%;
+  display: flex;
   flex-wrap: wrap;
-  margin: auto;
-  width: 95%;
 }
 </style>

@@ -39,20 +39,23 @@ export default {
       e.preventDefault();
       this.loading = true;
       this.token = localStorage.getItem("token");
-      fetch(`https://viabrico.herokuapp.com/suppliers`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": `application/json`,
-          Authorization: `Bearer ${this.token}`
-        },
-        body: JSON.stringify({
-          name: this.name,
-          description: this.description,
-          address: this.address,
-          phone: this.phone,
-          mail: this.email
-        })
-      })
+      fetch(
+        `https://viabrico.herokuapp.com/suppliers/${this.$route.params.id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": `application/json`,
+            Authorization: `Bearer ${this.token}`
+          },
+          body: JSON.stringify({
+            name: this.name,
+            description: this.description,
+            address: this.address,
+            phone: this.phone,
+            email: this.email
+          })
+        }
+      )
         .then(body => {
           return body.json();
         })
@@ -82,7 +85,7 @@ export default {
         this.description = res.description;
         this.address = res.address;
         this.phone = res.phone;
-        this.email = res.mail;
+        this.email = res.email;
       });
   }
 };

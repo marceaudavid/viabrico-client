@@ -62,7 +62,7 @@ export default {
     request(e) {
       e.preventDefault();
       this.loading = true;
-      fetch(`https://viabrico.herokuapp.com/${this.name}`, {
+      fetch(`https://viabrico.herokuapp.com/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -71,25 +71,24 @@ export default {
       })
         .then(body => {
           if (body.status === 403) {
+            this.loading = false;
             this.errors.push(`Wrong password`);
           } else if (body.status === 404) {
+            this.loading = false;
             this.errors.push(`This user doesn't exist`);
           } else {
-            if (this.name === "register") {
-              router.push({ name: "login" });
-            } else {
-              return body.json();
-            }
+            return body.json();
           }
         })
         .then(res => {
           this.loading = false;
-          if (this.name === "login") {
+          if (this.errors.length === 0) {
             localStorage.setItem("token", res);
             router.push({ name: "dashboard", params: { token: res } });
           }
         })
-        .catch(() => {
+        .catch(err => {
+          console.log(err);
           this.loading = false;
           this.errors.push(`Network error, please retry later`);
         });
@@ -118,7 +117,7 @@ export default {
 .container-card {
   height: 60%;
   width: 40%;
-  font-family: Segoe UI;
+  font-family: "Lato";
 }
 @media screen and (max-width: 640px) {
   .container-card {
