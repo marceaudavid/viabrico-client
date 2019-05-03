@@ -61,7 +61,7 @@ export default {
 <style scoped>
 .card {
   flex: 1 0 250px;
-  height: 250px;
+  height: auto;
   margin: 2em;
   display: flex;
   flex-direction: column;

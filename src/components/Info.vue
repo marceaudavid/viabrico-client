@@ -22,7 +22,7 @@
 
 <script>
 export default {
-  name: "InfoCard",
+  name: "Info",
   props: {
     id: Number,
     name: String,

@@ -29,29 +29,54 @@ export default new Router({
     {
       path: "/add",
       name: "add",
-      component: Add
+      component: Add,
+      beforeEnter: (to, from, next) => {
+        if (localStorage.getItem("token") === null || localStorage.getItem("token") === undefined) {
+          next("/login");
+        } else {
+          next();
+        }
+      }
     },
     {
       path: "/supplier/:id",
       name: "supplier",
-      component: Supplier
+      component: Supplier,
+      beforeEnter: (to, from, next) => {
+        if (localStorage.getItem("token") === null || localStorage.getItem("token") === undefined) {
+          next("/login");
+        } else {
+          next();
+        }
+      }
     },
     {
       path: "/supplier/:id/edit",
       name: "edit",
-      component: Edit
+      component: Edit,
+      beforeEnter: (to, from, next) => {
+        if (localStorage.getItem("token") === null || localStorage.getItem("token") === undefined) {
+          next("/login");
+        } else {
+          next();
+        }
+      }
     },
     {
       path: "/dashboard",
       name: "dashboard",
-      component: Dashboard
-      // beforeEnter: (to, from, next) => {
-      //   if (to.params.token === null || to.params.token === undefined) {
-      //     next("/login");
-      //   } else {
-      //     next();
-      //   }
-      // }
+      component: Dashboard,
+      beforeEnter: (to, from, next) => {
+        if (localStorage.getItem("token") === null || localStorage.getItem("token") === undefined) {
+          next("/login");
+        } else {
+          next();
+        }
+      }
+    },
+    {
+      path: "*",
+      redirect: "/login"
     }
   ]
 });

@@ -57,7 +57,8 @@ export default {
 <style scoped>
 .container-card {
   width: 100%;
-  height: 89.3%;
+  height: 100%;
+  margin: 2em;
   display: flex;
   justify-content: center;
   align-items: center;
