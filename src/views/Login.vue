@@ -100,11 +100,7 @@ export default {
   justify-content: center;
   width: 100%;
   height: 100%;
-  background-image: linear-gradient(
-      rgba(254, 253, 253, 0.3),
-      rgba(254, 253, 253, 0.3)
-    ),
-    url(../assets/img/city-background-3.jpg);
+  background-image: linear-gradient(to right,#667db6, #0082c8, #0082c8, #667db6);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -112,13 +108,13 @@ export default {
 }
 .container-card {
   height: 60%;
-  width: 40%;
+  width: 500px;
   font-family: "Lato";
 }
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 840px) {
   .container-card {
     height: 50%;
-    width: 75%;
+    width: 60%;
   }
 }
 .container-title {
@@ -126,13 +122,13 @@ export default {
   justify-content: center;
   height: 14%;
   align-items: center;
-  background: linear-gradient(#3c3d4b, #675558);
-  border-radius: 25px 25px 0 0;
+  background: #2c3e50;
+  border-radius: 18px 18px 0 0;
 }
 
 .title {
   margin: 0;
-  color: #ff5d00;
+  color: #FFF;
   text-transform: uppercase;
   font-size: 2em;
 }
@@ -208,9 +204,9 @@ router-link {
   width: 100%;
   padding: 0;
   height: 19%;
-  border-radius: 0 0 25px 25px;
-  background: linear-gradient(#675558, #3c3d4b);
-  color: #ff5d00;
+  border-radius: 0 0 18px 18px;
+  background: #2c3e50;
+  color: #FFF;
   text-transform: uppercase;
   font-size: 2em;
   margin: 0;
