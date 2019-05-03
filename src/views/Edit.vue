@@ -5,19 +5,19 @@
       <div class="container-form">
         <form class="form" @submit="request">
           <div class="title">
-            <h1>NEW SUPPLIER</h1>
+            <h1 class="title-edit">NEW SUPPLIER</h1>
             <hr>
           </div>
-          <label for>Name :</label>
-          <input type="text" v-model="name" name="name" required>
-          <label for>Address :</label>
-          <input type="text" v-model="address" name="address" required>
-          <label for>Phone-Number :</label>
-          <input type="number" v-model="phone" name="phone" required>
-          <label for>Email :</label>
-          <input type="email" v-model="email" name="email" required>
-          <label for>Description :</label>
-          <textarea v-model="description" name="description" required></textarea>
+          <label class="label-edit" for>Name :</label>
+          <input class="input-edit" type="text" v-model="name" name="name" required>
+          <label class="label-edit" for>Address :</label>
+          <input class="input-edit" type="text" v-model="address" name="address" required>
+          <label class="label-edit" for>Phone-Number :</label>
+          <input class="input-edit" type="number" v-model="phone" name="phone" required>
+          <label class="label-edit" for>Email :</label>
+          <input class="input-edit" type="email" v-model="email" name="email" required>
+          <label class="label-edit" for>Description :</label>
+          <textarea class="description" v-model="description" name="description" required></textarea>
           <Submit class="button" v-bind:loading="loading"/>
         </form>
       </div>
@@ -146,22 +146,22 @@ export default {
   text-align: center;
   margin: 0px auto;
 }
-h1 {
+.title-edit {
   margin-bottom: 20px;
   font-size: 1.5em;
 }
 hr {
   border: solid 1px #707070;
 }
-label {
+.label-edit {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
-input {
+.input-edit {
   background-color: #e8eeee;
   border: none;
   height: 30px;
 }
-textarea {
+.description {
   background-color: #e8eeee;
   border: none;
   height: 200px;
