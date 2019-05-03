@@ -5,6 +5,7 @@ import Login from "./views/Login.vue";
 import Dashboard from "./views/Dashboard.vue";
 import Supplier from "./views/Supplier.vue";
 import Edit from "./views/Edit.vue";
+import Info from "./views/Info.vue";
 import Add from "./views/Add.vue";
 
 Vue.use(Router);
@@ -40,6 +41,11 @@ export default new Router({
       path: "/supplier/:id/edit",
       name: "edit",
       component: Edit
+    },
+    {
+      path: "/supplier/:id/info",
+      name: "info",
+      component: Info
     },
     {
       path: "/dashboard",

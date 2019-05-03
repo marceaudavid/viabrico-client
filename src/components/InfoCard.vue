@@ -1,33 +1,21 @@
 <template>
   <div class="container">
     <div class="container-top">
-      <div class="option">
-        <img class="icon-option" src="../assets/svg/_ionicons_svg_md-more.svg" alt="image-option">
-        <img
-          class="icon-option"
-          v-on:click="editSupplier"
-          src="../assets/svg/edit.svg"
-          alt="image-edit"
-        >
-        <img
-          class="icon-option"
-          v-on:click="deleteSupplier"
-          src="../assets/svg/delete.svg"
-          alt="image-delete"
-        >
-      </div>
       <div class="profil">
         <img class="icon-profil" src="../assets/svg/icons8-administrator-male-filled.svg" alt>
+        <h1>{{ this.name }}</h1>
       </div>
     </div>
 
     <div class="container-bot">
-      <h1>{{ this.name }}</h1>
-      <p>{{ this.address }}</p>
-      <p>{{ this.phone }}</p>
-      <p>{{ this.mail }}</p>
-      <div class="read">
-        <a class="link-read" v-on:click="moreInfo" href>Read More</a>
+      <div class="bot">
+        <h2>Description</h2>
+        <p>{{ this.description }}</p>
+        <div class="coordon">
+          <p>{{ this.address }}</p>
+          <p>{{ this.phone }}</p>
+          <p>{{ this.mail }}</p>
+        </div>
       </div>
     </div>
   </div>
@@ -36,7 +24,7 @@
 <script>
 import router from "@/router.js";
 export default {
-  name: "Card",
+  name: "InfoCard",
   props: {
     id: Number,
     name: String,
@@ -51,37 +39,30 @@ export default {
       response: null,
       errors: []
     };
-  },
-  methods: {
-    editSupplier() {
-      router.push({
-        path: `/supplier/${this.id}/edit`
-      });
-    },
-    deleteSupplier() {
-      this.$emit("delete", this.id);
-    },
-    moreInfo() {
-      router.push({
-        path: `/supplier/${this.id}/info`
-      });
-    }
   }
 };
 </script>
 
 <style scoped>
+* {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
 .container {
-  margin: 25px 25px 50px 25px;
   border-radius: 30px;
-  width: 350px;
-  height: 500px;
+  width: 970px;
+  height: 700px;
   background-image: url("../assets/img/img_mountains.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   font-family: Segoe UI;
   box-shadow: 2px 2px 50px 5px rgba(0, 0, 0, 0.1);
+}
+@media screen and (max-width: 1000px) {
+  .container {
+    width: 85%;
+    height: 85%;
+  }
 }
 .container-top {
   display: flex;
@@ -94,7 +75,8 @@ export default {
   margin: 10px 10px 0 auto;
 }
 .profil {
-  margin: 0 auto;
+  margin: 15px 0 0 100px;
+  display: flex;
 }
 .icon-profil {
   width: 100px;
@@ -103,6 +85,20 @@ export default {
   background-color: white;
   height: 65%;
   border-radius: 0 0 25px 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.bot {
+  height: 85%;
+  width: 85%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.coordon {
+  display: flex;
+  justify-content: space-between;
 }
 h1 {
   text-align: center;
@@ -121,7 +117,6 @@ h1 {
   color: #0081f2;
 }
 p {
-  text-align: center;
   margin: 10px 0 10px 0;
 }
 a {
