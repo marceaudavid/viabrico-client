@@ -62,7 +62,7 @@ export default {
     request(e) {
       e.preventDefault();
       this.loading = true;
-      fetch(`https://viabrico.herokuapp.com/${this.name}`, {
+      fetch(`https://viabrico.herokuapp.com/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -75,19 +75,13 @@ export default {
           } else if (body.status === 404) {
             this.errors.push(`This user doesn't exist`);
           } else {
-            if (this.name === "register") {
-              router.push({ name: "login" });
-            } else {
-              return body.json();
-            }
+            return body.json();
           }
         })
         .then(res => {
           this.loading = false;
-          if (this.name === "login") {
-            localStorage.setItem("token", res);
-            router.push({ name: "dashboard", params: { token: res } });
-          }
+          localStorage.setItem("token", res);
+          router.push({ name: "dashboard", params: { token: res } });
         })
         .catch(() => {
           this.loading = false;

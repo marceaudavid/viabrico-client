@@ -60,6 +60,7 @@ export default {
         .then(res => {
           this.loading = false;
           router.push({ name: "dashboard" });
+          this.response = res;
         })
         .catch(() => {
           this.loading = false;

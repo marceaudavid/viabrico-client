@@ -23,7 +23,6 @@
 
     <div class="container-bot">
       <h1>{{ this.name }}</h1>
-      <p class="info">Animateur de télévision et de radio, producteur de télévission.</p>
       <p>{{ this.address }}</p>
       <p>{{ this.phone }}</p>
       <p>{{ this.mail }}</p>
@@ -43,7 +42,7 @@ export default {
     name: String,
     address: String,
     mail: String,
-    phone: String,
+    phone: Number,
     description: String
   },
   data() {

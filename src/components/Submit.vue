@@ -26,6 +26,9 @@ export default {
   border: 1px solid #2c3e50;
   border-radius: 5px;
   color: #2c3e50;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .loader {
