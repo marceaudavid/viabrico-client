@@ -1,14 +1,27 @@
 <template>
-  <div>
+  <div class="container">
     <Nav/>
-    <form class="form" @submit="request">
-      <input type="text" v-model="name" name="name" placeholder="Name" required>
-      <textarea v-model="description" name="description" placeholder="Description" required></textarea>
-      <input type="text" v-model="address" name="address" placeholder="Address" required>
-      <input type="number" v-model="phone" name="phone" placeholder="Phone" required>
-      <input type="email" v-model="email" name="email" placeholder="Email" required>
-      <Submit v-bind:loading="loading"/>
-    </form>
+    <div class="container-form-parent">
+      <div class="container-form">
+        <form class="form" @submit="request">
+          <div class="title">
+            <h1 class="title-edit">NEW SUPPLIER</h1>
+            <hr>
+          </div>
+          <label class="label-edit" for>Name :</label>
+          <input class="input-edit" type="text" v-model="name" name="name" required>
+          <label class="label-edit" for>Address :</label>
+          <input class="input-edit" type="text" v-model="address" name="address" required>
+          <label class="label-edit" for>Phone-Number :</label>
+          <input class="input-edit" type="number" v-model="phone" name="phone" required>
+          <label class="label-edit" for>Email :</label>
+          <input class="input-edit" type="email" v-model="email" name="email" required>
+          <label class="label-edit" for>Description :</label>
+          <textarea class="description" v-model="description" name="description" required></textarea>
+          <Submit class="button" v-bind:loading="loading"/>
+        </form>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -92,4 +105,74 @@ export default {
 </script>
 
 <style>
+.container {
+  width: 100%;
+  height: 100%;
+}
+.container-form-parent {
+  height: 89.4%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #e5ded8;
+}
+.container-form {
+  width: 675px;
+  height: 720px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f5f6f8;
+  border-radius: 15px;
+}
+@media screen and (max-width: 700px) {
+  .container-form {
+    width: 85%;
+  }
+}
+.form {
+  height: 680px;
+  width: 535px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+@media screen and (max-width: 700px) {
+  .form {
+    width: 85%;
+  }
+}
+.title {
+  width: 85%;
+  text-align: center;
+  margin: 0px auto;
+}
+.title-edit {
+  margin-bottom: 20px;
+  font-size: 1.5em;
+}
+hr {
+  border: solid 1px #707070;
+}
+.label-edit {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+.input-edit {
+  background-color: #e8eeee;
+  border: none;
+  height: 30px;
+}
+.description {
+  background-color: #e8eeee;
+  border: none;
+  height: 200px;
+}
+.button {
+  height: 50px;
+  border: none;
+  background-color: #4cc96e;
+  margin: 0;
+}
 </style>
